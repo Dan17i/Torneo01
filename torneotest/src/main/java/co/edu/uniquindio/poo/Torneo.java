@@ -1,11 +1,12 @@
 package co.edu.uniquindio.poo;
 
+import java.time.LocalDate;
+
 /**
  * Hello world!
  *
  */
-public class App {
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+public record Torneo(String nomtorneo, LocalDate fechaInicio, LocalDate fechaIniIns, LocalDate fechaCierIns,byte numpart, byte limEdad, float valor  ) {
+    
+
 }
