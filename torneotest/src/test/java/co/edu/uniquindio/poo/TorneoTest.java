@@ -74,8 +74,36 @@ public class TorneoTest {
 
          LOG.info("Iniciado test dato nulos ");
    
-         assertThrows(Throwable.class, () -> new Torneo(0, 0, 0, 0 ,(byte)24, (byte)0,(byte) 0) );
+         assertThrows(Throwable.class, () -> new Torneo(null, null, null, null ,(byte)24, (byte)0,(byte) 0) );// por que no me corre
 
         LOG.info("finalizando test de datos nulos");
     }
+    // dato paricipantes negativos
+      @Test 
+      public void datosNegativos(){
+         LOG.info("Iniciado test dato participantes negativos ");
+
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)-24, (byte)0, (float)0) );
+
+         LOG.info("finalizando test datos participantes negativos ");
+      }
+    // limite edad negativo
+     @Test 
+      public void datoLimitenegativo(){
+         LOG.info("Iniciado test dato participantes negativos ");
+
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)-1, (float)0) );
+
+         LOG.info("finalizando test datos participantes negativos ");
+      }
+       // limite inscripcion negativo
+     @Test 
+      public void inscripcionnegativa(){
+         LOG.info("Iniciado test dato inscripcion negativos ");
+
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)1, (float)-1) );
+
+         LOG.info("finalizando test datos inscripcion negativos ");
+      }
+      
 }
