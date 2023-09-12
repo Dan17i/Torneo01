@@ -8,7 +8,7 @@
 package co.edu.uniquindio.poo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
 import java.util.logging.Logger;
@@ -52,16 +52,30 @@ public class TorneoTest {
 
         LOG.info("Inicializando el objeto ");
 
-        Torneo torneo= new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0,(float)0);
+        Torneo torneo1= new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0,(float)0);
 
-        assertEquals("Copa mundo", torneo.nomtorneo());
-        assertEquals(LocalDate.of(2023, 10, 1),torneo.fechaInicio());
-        assertEquals(LocalDate.of(2023, 8, 1), torneo.fechaIniIns());
-        assertEquals(  LocalDate.of(2023, 9, 15), torneo.fechaCierIns());
-        assertEquals((byte)24, torneo.numpart());
-        assertEquals((byte)0, torneo.limEdad());
-        assertEquals((float)0, torneo.valor());
+        assertEquals("Copa mundo", torneo1.nomtorneo());
+        assertEquals(LocalDate.of(2023, 10, 1),torneo1.fechaInicio());
+        assertEquals(LocalDate.of(2023, 8, 1), torneo1.fechaIniIns());
+        assertEquals(  LocalDate.of(2023, 9, 15), torneo1.fechaCierIns());
+        assertEquals((byte)24, torneo1.numpart());
+        assertEquals((byte)0, torneo1.limEdad());
+        assertEquals((float)0, torneo1.valor());
 
         LOG.info("datos completos");
+    }
+
+     // con datos null |null|,|null|,|null|,24,0,0.
+    /**
+     * 
+     */
+    @Test 
+    public void datosnualos(){
+
+         LOG.info("Iniciado test dato nulos ");
+   
+         assertThrows(Throwable.class, () -> new Torneo(0, 0, 0, 0 ,(byte)24, (byte)0,(byte) 0) );
+
+        LOG.info("finalizando test de datos nulos");
     }
 }

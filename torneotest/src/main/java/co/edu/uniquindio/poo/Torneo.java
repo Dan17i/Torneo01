@@ -7,6 +7,16 @@ import java.time.LocalDate;
  *
  */
 public record Torneo(String nomtorneo, LocalDate fechaInicio, LocalDate fechaIniIns, LocalDate fechaCierIns,byte numpart, byte limEdad, float valor  ) {
-    
+   
+  public Torneo{
+    assert nomtorneo != null;
+    assert fechaInicio != null;
+    assert fechaIniIns != null;
+    assert fechaCierIns != null;
+   
+  }
+
+
 
 }
+
