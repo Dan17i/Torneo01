@@ -105,5 +105,22 @@ public class TorneoTest {
 
          LOG.info("finalizando test datos inscripcion negativos ");
       }
-      
+      // Fecha de incripciones tardias
+     @Test 
+      public void inscripcionTardia(){
+         LOG.info("Iniciado test inscripcion tardia ");
+
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 15), (byte)24, (byte)1, (float)-1) );
+
+         LOG.info("finalizando test inscripcion tardias ");
+      }
+       // Fecha de fecha cierre tardias
+     @Test 
+      public void fechaCierrecTardia(){
+         LOG.info("Iniciado test echaCierrecTardia tardia ");
+
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 11, 15), LocalDate.of(2023, 11, 1), (byte)24, (byte)1, (float)-1) );
+
+         LOG.info("finalizando test echaCierrecTardia tardias ");
+      }
 }

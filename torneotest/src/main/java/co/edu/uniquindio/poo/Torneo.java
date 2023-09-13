@@ -16,6 +16,8 @@ public record Torneo(String nomtorneo, LocalDate fechaInicio, LocalDate fechaIni
     assert numpart >= 0;
     assert limEdad >= 0;
     assert valor >= 0;
+    assert fechaIniIns.isAfter(fechaInicio);
+    assert fechaCierIns.isAfter(fechaIniIns);
   }
 
 
