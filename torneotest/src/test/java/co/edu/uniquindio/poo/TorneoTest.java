@@ -29,18 +29,18 @@ public class TorneoTest {
 
         LOG.info("Inicializando el objeto ");
         
-        Torneo torneo= new Torneo("Copa mundo",LocalDate.of(2006, 3, 17),LocalDate.of(2006, 1, 27), LocalDate.of(2006, 2, 15), (byte)17, (byte)18,(float)30000);
+        Torneo torneo= new Torneo("Copa mundo",LocalDate.of(2006, 3, 17),LocalDate.of(2006, 1, 27), LocalDate.of(2006, 2, 15), (byte)17, (byte)18,(float)30000,TipoTorneo.LOCAL);
 
         LOG.info("comprobando elementos ");
         
 
-        assertEquals("Copa mundo", torneo.nomtorneo());
-        assertEquals(LocalDate.of(2006, 3, 17),torneo.fechaInicio());
-        assertEquals(LocalDate.of(2006, 1, 27), torneo.fechaIniIns());
-        assertEquals( LocalDate.of(2006, 2, 15), torneo.fechaCierIns());
-        assertEquals((byte)17, torneo.numpart());
-        assertEquals((byte)18, torneo.limEdad());
-        assertEquals((float)30000,torneo.valor());
+        assertEquals("Copa mundo", torneo.getNomtorneo());
+        assertEquals(LocalDate.of(2006, 3, 17),torneo.getFechaInicio());
+        assertEquals(LocalDate.of(2006, 1, 27), torneo.getFechaIniIns());
+        assertEquals( LocalDate.of(2006, 2, 15), torneo.getFechaCierIns());
+        assertEquals((byte)17, torneo.getNumpart());
+        assertEquals((byte)18, torneo.getLimEdad());
+        assertEquals((float)30000,torneo.getValor());
 
         LOG.info("Finalizando test exitoso");
     }
