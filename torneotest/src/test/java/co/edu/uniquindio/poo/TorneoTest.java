@@ -29,8 +29,9 @@ public class TorneoTest {
 
         LOG.info("Inicializando el objeto ");
         
-        Torneo torneo= new Torneo("Copa mundo",LocalDate.of(2006, 3, 17),LocalDate.of(2006, 1, 27), LocalDate.of(2006, 2, 15), (byte)17, (byte)18,(float)30000,TipoTorneo.LOCAL);
-
+        Representante representante= new Representante("Jose","Silva", "JoseSl@gamil.com", "12345678");
+        Equipo equipo = new Equipo("Real", representante );
+        Torneo torneo= new Torneo("Copa mundo",LocalDate.of(2006, 3, 17),LocalDate.of(2006, 1, 27), LocalDate.of(2006, 2, 15), (byte)17, (byte)18,(float)30000,TipoTorneo.LOCAL, equipo);
         LOG.info("comprobando elementos ");
         
 
@@ -41,6 +42,7 @@ public class TorneoTest {
         assertEquals((byte)17, torneo.getNumpart());
         assertEquals((byte)18, torneo.getLimEdad());
         assertEquals((float)30000,torneo.getValor());
+        assertEquals(TipoTorneo.LOCAL, torneo.getTipoTorneo());
 
         LOG.info("Finalizando test exitoso");
     }
@@ -52,7 +54,9 @@ public class TorneoTest {
 
         LOG.info("Inicializando el objeto ");
 
-        Torneo torneo1= new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0,(float)0, TipoTorneo.LOCAL);
+        Representante representante = new Representante("Jose", "Silva", "JoseSl@gamil.com", "12345678");
+        Equipo equipo = new Equipo("real", representante);
+        Torneo torneo1= new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0,(float)0, TipoTorneo.LOCAL,equipo);
 
         assertEquals("Copa mundo", torneo1.getNomtorneo());
         assertEquals(LocalDate.of(2023, 10, 1),torneo1.getFechaInicio());
@@ -61,6 +65,7 @@ public class TorneoTest {
         assertEquals((byte)24, torneo1.getNumpart());
         assertEquals((byte)0, torneo1.getLimEdad());
         assertEquals((float)0, torneo1.getValor());
+        assertEquals(TipoTorneo.LOCAL, torneo1.getTipoTorneo());
 
         LOG.info("datos completos");
     }
@@ -74,7 +79,7 @@ public class TorneoTest {
 
          LOG.info("Iniciado test dato nulos ");
    
-         assertThrows(Throwable.class, () -> new Torneo(null, null, null, null ,(byte)24, (byte)0,(byte) 0, null) );// por que no me corre
+         assertThrows(Throwable.class, () -> new Torneo(null, null, null, null ,(byte)24, (byte)0,(byte) 0, null, null) );// por que no me corre
 
         LOG.info("finalizando test de datos nulos");
     }
@@ -83,7 +88,7 @@ public class TorneoTest {
       public void datosNegativos(){
          LOG.info("Iniciado test dato participantes negativos ");
 
-        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)-24, (byte)0, (float)0,TipoTorneo.LOCAL) );
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)-24, (byte)0, (float)0,TipoTorneo.LOCAL, null));
 
          LOG.info("finalizando test datos participantes negativos ");
       }
@@ -92,7 +97,7 @@ public class TorneoTest {
       public void datoLimitenegativo(){
          LOG.info("Iniciado test dato participantes negativos ");
 
-        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)-1, (float)0,TipoTorneo.LOCAL) );
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)-1, (float)0,TipoTorneo.LOCAL, null) );
 
          LOG.info("finalizando test datos participantes negativos ");
       }
@@ -101,7 +106,7 @@ public class TorneoTest {
       public void inscripcionnegativa(){
          LOG.info("Iniciado test dato inscripcion negativos ");
 
-        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)1, (float)-1, TipoTorneo.LOCAL) );
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)1, (float)-1, TipoTorneo.LOCAL, null) );
 
          LOG.info("finalizando test datos inscripcion negativos ");
       }
@@ -110,7 +115,7 @@ public class TorneoTest {
       public void inscripcionTardia(){
          LOG.info("Iniciado test inscripcion tardia ");
 
-        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 15), (byte)24, (byte)1, (float)-1, TipoTorneo.LOCAL) );
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 15), (byte)24, (byte)1, (float)-1, TipoTorneo.LOCAL, null) );
 
          LOG.info("finalizando test inscripcion tardias ");
       }
@@ -119,7 +124,7 @@ public class TorneoTest {
       public void fechaCierrecTardia(){
          LOG.info("Iniciado test echaCierrecTardia tardia ");
 
-        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 11, 15), LocalDate.of(2023, 11, 1), (byte)24, (byte)1, (float)-1, TipoTorneo.LOCAL) );
+        assertThrows(Throwable.class,() -> new Torneo("Copa mundo",LocalDate.of(2023, 10, 1),LocalDate.of(2023, 11, 15), LocalDate.of(2023, 11, 1), (byte)24, (byte)1, (float)-1, TipoTorneo.LOCAL, null) );
 
          LOG.info("finalizando test echaCierrecTardia tardias ");
       }

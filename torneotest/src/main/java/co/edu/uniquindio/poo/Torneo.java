@@ -18,10 +18,11 @@ public class Torneo {
   private final byte limEdad;
   private final float valor ; 
   TipoTorneo tipoTorneo ;
+  Equipo equipo;
 
   // constructor de clase
   public Torneo(String nomtorneo, LocalDate fechaInicio, LocalDate fechaIniIns, LocalDate fechaCierIns, byte numpart,
-      byte limEdad, float valor, TipoTorneo tipoTorneo) {
+  byte limEdad, float valor, TipoTorneo tipoTorneo,Equipo equipo) {
     this.nomtorneo = nomtorneo;
     this.fechaInicio = fechaInicio;
     this.fechaIniIns = fechaIniIns;
@@ -30,7 +31,8 @@ public class Torneo {
     this.limEdad = limEdad;
     this.valor = valor;
     this.tipoTorneo = tipoTorneo;
-
+    this.equipo = equipo;
+    
     // asserts para excepciones 
     assert nomtorneo != null;
     assert fechaInicio != null;
